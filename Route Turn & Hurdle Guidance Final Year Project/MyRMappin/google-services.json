@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "655564524545",
+    "firebase_url": "https://riderguider-d7344.firebaseio.com",
+    "project_id": "riderguider-d7344",
+    "storage_bucket": "riderguider-d7344.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655564524545:android:4f0919a11c3b2406",
+        "android_client_info": {
+          "package_name": "com.empireclan.farjad.myrmappin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655564524545-iquuo9t4hq9h17emtj72haj4osdctihj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.empireclan.farjad.myrmappin",
+            "certificate_hash": "c0a53b7646acbfa4a8a6f0aefd10bc3785ac49ea"
+          }
+        },
+        {
+          "client_id": "655564524545-qvgtekgqm1d42i3vgdsr6bbqhmrsorkd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNCkKN47203v_VhuUDhO_I9mg8vN9uw5o"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "655564524545-qvgtekgqm1d42i3vgdsr6bbqhmrsorkd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

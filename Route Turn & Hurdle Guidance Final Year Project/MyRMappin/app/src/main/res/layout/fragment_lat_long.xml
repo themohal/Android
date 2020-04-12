@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:id="@+id/myfrag"
+    >
+
+    <TextView
+        android:id="@+id/latV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11111111111111"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:maxLength="10"
+        android:layout_marginLeft="-100dp"
+        />
+
+    <Button
+        android:id="@+id/directButton"
+        android:layout_width="150dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="-85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#24ace2"
+        android:text="Directions"
+        android:textColor="#ffff" />
+
+
+    <TextView
+        android:id="@+id/lonV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="-107dp"
+        android:layout_marginLeft="100dp"
+        android:text="22222222222222"
+        android:textColor="#000"
+        android:textSize="20sp"
+        android:maxLength="10"
+        />
+
+    </LinearLayout>

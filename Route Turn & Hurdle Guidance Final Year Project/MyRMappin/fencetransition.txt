@@ -1,0 +1,157 @@
+package com.empireclan.farjad.myrmappin;
+
+import android.Manifest;
+import android.app.IntentService;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.app.Service;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.res.Resources;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
+import android.support.v4.app.TaskStackBuilder;
+import android.text.TextUtils;
+import android.util.Log;
+
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.Geofence;
+import com.google.android.gms.location.GeofenceStatusCodes;
+import com.google.android.gms.location.GeofencingEvent;
+import com.google.android.gms.location.GeofencingRequest;
+import com.google.android.gms.location.LocationServices;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GeofenceTransitionService extends IntentService implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, ResultCallback<Status> {
+    //Whatever you need to declare {
+    protected static final String TAG = "RegisterGeoIS";
+
+    private static final long TIME_OUT = 100;
+    protected GoogleApiClient mGoogleApiClient;
+    protected ArrayList<Geofence> mGeofenceList;
+    private PendingIntent mGeofencePendingIntent;
+
+    GeofencingRequest mRequest;
+
+    public GeofenceTransitionService() {
+        super("my service");
+    }
+
+    //This is only called once per instance of a Service, so use this to instantiate class variables
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+
+    //Every time you call context.startService(Intent intent) after the service is created,
+    //this function gets called with the intent you have given it. You can use this to modify or change the geofence api,
+    //passing GeofencingRequests in intents by calling intent.putExtra(...) before sending the intent, and retrieving it here.
+    //I just assume you are passing GeofencingRequest objects, since they are pacelable.
+
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    protected void onHandleIntent(@Nullable Intent intent) {
+
+    }
+
+
+    private String getGeofenceTransitionDetails( int transitionType, List<Geofence> triggeredGeoFence) {
+      ArrayList<String > triggeredfenceList=new ArrayList<>();
+     for (Geofence geofence:triggeredGeoFence ){
+       triggeredfenceList.add(geofence.getRequestId());
+        }
+        String status=null;
+        if(transitionType==Geofence.GEOFENCE_TRANSITION_ENTER){
+            status="Entering";
+sendNotification();
+
+            Log.e(TAG, "FENCE : " + status);
+
+
+        }
+        else if(transitionType==Geofence.GEOFENCE_TRANSITION_EXIT){
+            status="Existing";
+
+
+
+        }
+        return status;
+    }
+
+    public void sendNotification() {
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(GeofenceTransitionService.this);
+
+        //Create the intent that’ll fire when the user taps the notification//
+
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.androidauthority.com/"));
+       PendingIntent pendingIntent = PendingIntent.getActivity(GeofenceTransitionService.this, 001, intent, 0);
+
+        mBuilder.setContentIntent(pendingIntent);
+
+        mBuilder.setSmallIcon(R.drawable.ic_action_location);
+        mBuilder.setContentTitle("RiderGuider");
+        mBuilder.setContentText("Speed Breaker Ahead Slow down....");
+
+
+        NotificationManager mNotificationManager =
+
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (mNotificationManager != null) {
+            mNotificationManager.notify(001, mBuilder.build());
+        }
+
+    }
+
+    private void onError(int i) {
+        Log.e(TAG, "Geofencing Error: " + i);
+    }
+
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+        mGoogleApiClient.reconnect();
+    }
+
+    @Override
+    public void onResult(@NonNull Status status) {
+
+    }
+}
+
+
+
