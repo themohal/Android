@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Whitenoise</string>
+    <string name="button_home1">Start Relaxing</string>
+    <string name="button_home2">Features</string>
+    <string name="button_home3">Share</string>
+    <string name="title_activity_bottom_navigation">bottom_navigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_music">Noises</string>
+    <string name="title_mixer">Mixer</string>
+    <string name="title_record">Record</string>
+    <string name="title_library">Library</string>
+    <string name="home_menu_text1">You can mix different noises and listen them at the same time</string>
+    <string name="home_menu_text2"> Record your own noises and listen them whenever youd like</string>
+    <string name="drawer_open">open</string>
+    <string name="drawer_close">close</string>
+
+    <string name="pref_remove_ads">Remove Advertisements</string>
+    <string name="pref_ad_removal_purchased">Ad Removal Purchased</string>
+    <string name="pref_remove_ads_key">adFree</string>
+    <string name="pref_total_goals_key">total number of goals</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

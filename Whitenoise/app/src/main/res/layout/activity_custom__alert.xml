@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:background="@drawable/dialog_curve"
+    android:id="@+id/custom_alert"
+    >
+    <TextView
+        android:id="@+id/txt_dia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="Create New Playlist ?"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:id="@+id/text21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt_dia"
+        android:text="Enter a name for this playlist"
+        android:textColor="#2B2222"
+        android:layout_centerInParent="true"
+        />
+<EditText
+    android:layout_below="@+id/text21"
+    android:id="@+id/play_list_textEdit"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="Playlist Name"
+    android:layout_centerInParent="true"
+    android:textColor="#000"
+    android:textColorHint="#BEB9B9"
+    android:background="#fff"
+    android:layout_above="@+id/btn_no"
+    android:layout_marginBottom="5dp"
+    />
+
+    <Button
+        android:id="@+id/btn_yes"
+        android:layout_width="163dp"
+        android:layout_height="63dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btn_no"
+        android:layout_marginRight="-2dp"
+        android:layout_marginBottom="0dp"
+        android:background="@drawable/alert_custom_button_corner2"
+        android:clickable="true"
+        android:text="Create"
+        android:textColor="#5DBCD2"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_no"
+        android:layout_width="163dp"
+        android:layout_height="63dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="-2dp"
+        android:background="@drawable/dialouge_button_corner"
+        android:clickable="true"
+        android:text="Cancel"
+        android:textColor="#5DBCD2"
+        android:textStyle="bold" />
+</RelativeLayout>

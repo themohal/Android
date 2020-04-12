@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="4dp"
+    android:layout_marginTop="5dp"
+    android:background="#ff1e1f20"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:background="#000"
+        >
+
+        <ImageView
+            android:id="@+id/mixer_recycler_Image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="2dp"
+            />
+
+        <TextView
+            android:id="@+id/mixer_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="60dp"
+            android:text="LINE ONE"
+            android:textColor="#fff"
+            android:textSize="25sp"
+            android:freezesText="true"
+            android:textAllCaps="false"
+            android:fontFamily="Open Sans"
+            android:textStyle="bold" />
+
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

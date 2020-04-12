@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Style for "rectangle_" -->
+    <!-- Add this snippet to layer-list xml in drawable. -->
+    <item  >
+        <shape  android:shape="rectangle">
+            <corners android:bottomRightRadius="50dp"
+                android:topRightRadius="50dp"
+                />
+            <gradient android:type="linear"
+                android:useLevel="false"
+                android:startColor="#fff42929"
+                android:centerColor="#ff261e1e"
+                android:endColor="#ff261e1e"
+                android:angle="-45"
+
+                />
+            <padding android:bottom="60dp"/>
+        </shape>
+    </item>
+</layer-list>

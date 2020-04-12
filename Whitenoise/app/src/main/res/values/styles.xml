@@ -1,0 +1,71 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <!-- Base full screen. -->
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    <!-- Text style for "start_rela" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="start_rela">
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:text">@string/button_home1</item>
+    </style>
+    <!-- Text style for "start__rel" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="start__rel">
+        <item name="android:text">Start  Relaxing</item>
+    </style>
+    <!-- Text style for "features" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="features">
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:text">Features</item>
+    </style>
+    <!-- Text style for "featu_res" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="featu_res">
+        <item name="android:text">Featu res</item>
+    </style>
+    <!-- Text style for "share" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="share">
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:text">Share</item>
+    </style>
+    <!-- Text style for "you_can_mi" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="you_can_mix">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:text">You can mix different noises and listen                  them at the same time </item>
+    </style>
+    <!-- Text style for "_record_yo" -->
+    <!-- Add this snippet to styles.xml. -->
+    <style name="_record_you">
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:text"> Record your own noises and listen           them whenever youd like</item>
+    </style>
+    <!-- Text style for "_record_yo" -->
+    <!-- Add this snippet to styles.xml. -->
+
+    <style name="menu_style" parent="Widget.AppCompat.PopupMenu">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:itemBackground">#ff696767</item>
+    </style>
+
+</resources>

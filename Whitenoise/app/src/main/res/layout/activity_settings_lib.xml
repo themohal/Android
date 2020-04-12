@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".settings_lib"
+    android:background="#ff1a1b1d"
+    >
+    <RelativeLayout
+        android:id="@+id/rect_lib_top"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="#ff5b86e5"
+            android:backgroundTintMode="add"
+            android:fontFamily="Open Sans"
+            android:textStyle="bold"
+
+            />
+        <ImageButton
+            android:id="@+id/settings_lib_back_button"
+            android:layout_width="14dp"
+            android:layout_height="24dp"
+            android:padding="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/back_chevron_right"/>
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/red_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/blue_line_settings"
+        android:layout_below="@+id/rect_lib_top"
+         />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/screen_lock"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/red_line"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical"
+        android:textOff=""
+        android:textOn=""
+        android:layout_marginTop="10dp"
+        android:background="#ff696767"
+        android:text="Auto Screen Lock"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textColor="#fff"
+        app:fontFamily="Open Sans"
+        android:textSize="20sp"
+        android:thumbTextPadding="25dp"
+        android:padding="20dp"
+        android:switchPadding="50dp"
+        app:track="@drawable/bg_switch_states"
+        android:thumb="@drawable/custom_switch_thumb"
+
+        />
+    <Button
+        android:id="@+id/rate_us"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/favorite"
+        android:paddingLeft="10dp"
+        android:textColor="#fff"
+        android:drawablePadding="20dp"
+        android:background="#ff696767"
+        android:layout_below="@+id/screen_lock"
+        android:text="Rate Us"
+
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="Open Sans"
+        android:gravity="center|left"
+        />
+    <Button
+        android:id="@+id/share_lib_settings"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/rate_us"
+        android:background="#ff696767"
+        android:layout_marginTop="5dp"
+        android:textColor="#fff"
+        android:drawableLeft="@drawable/share_lib_settings"
+        android:drawablePadding="20dp"
+        android:paddingLeft="10dp"
+        android:text="Share With Friends"
+        android:textAllCaps="false"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:fontFamily="Open Sans"
+        android:gravity="center|left"
+        />
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:layout_alignParentBottom="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+       />
+    <include layout="@layout/activity_bottom_base"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>

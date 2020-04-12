@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Style for "ellipse14" -->
+    <!-- Add this snippet to layer-list xml in drawable. -->
+    <item android:width="86dp" android:height="87dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffffffff" />
+            <corners android:radius="200dp"/>
+        </shape>
+    </item>
+</selector>

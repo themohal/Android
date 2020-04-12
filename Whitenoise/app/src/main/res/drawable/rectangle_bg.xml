@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Style for "background" -->
+    <!-- Add this snippet to layer-list xml in drawable. -->
+    <item android:width="360dp" android:height="640dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#ff1a1b1d" />
+        </shape>
+    </item>
+</selector>

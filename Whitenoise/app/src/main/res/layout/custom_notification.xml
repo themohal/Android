@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:background="#ff1a1b1d"
+    >
+    <ImageView
+        android:id="@+id/notificationSongImage"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        />
+    <ImageView
+        android:id="@+id/notificationPlayButton"
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="190dp" />
+    <ImageView
+        android:id="@+id/notificationPauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        />
+    <TextView
+        android:id="@+id/notificationSongTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#fff"
+        android:text="hello this first"
+        />
+    <ImageButton
+        android:id="@+id/notificationPreviousButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/prev_song_button"
+        android:background="#ff1a1b1d"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginLeft="100dp" />
+    <ImageButton
+        android:id="@+id/notificationNextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/next_song_button"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="260dp"
+        android:padding="10dp"
+        android:background="#ff1a1b1d"
+        android:layout_marginStart="260dp" />
+
+<ProgressBar
+    android:id="@+id/progressNotification"
+    style="?android:attr/progressBarStyleHorizontal"
+    android:layout_width="250dp"
+    android:layout_height="40dp"
+    android:layout_marginLeft="100dp"
+    android:layout_below="@id/notificationPlayButton"
+    android:layout_marginTop="40dp"
+    android:progress="0"
+    android:indeterminateDuration="100"
+    />
+
+</RelativeLayout>

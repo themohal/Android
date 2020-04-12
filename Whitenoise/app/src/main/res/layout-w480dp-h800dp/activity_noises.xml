@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Noises"
+    android:background="#ff1a1b1d"
+    >
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerImageSlider"
+        android:layout_width="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_height="370dp"
+        android:paddingStart="80dp"
+        android:paddingEnd="80dp">
+
+    </androidx.viewpager2.widget.ViewPager2>
+    <TextView
+        android:id="@+id/changing_captionTextview"
+
+        android:layout_alignBottom="@+id/viewPagerImageSlider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/changing_captionTextview"
+        android:layout_marginTop="30dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="272dp"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/adView"
+        android:layout_marginTop="60dp"
+        android:thumb="@drawable/thumb_vol"
+        android:splitTrack="false"
+        android:progressTint="#ff5b86e5"
+        android:progressDrawable="@drawable/custom_seek_bar_background"
+        android:progress="50"
+        tools:targetApi="lollipop"
+        />
+    <ImageView
+        android:id="@+id/white_vol_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/speaker_filled_audio_tool"
+        android:layout_below="@id/adView"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp" />
+    <ImageButton
+        android:id="@+id/nextBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/next_song_button"
+        android:layout_below="@+id/seekBar"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="260dp"
+        android:layout_alignRight="@+id/play_btn"
+        android:padding="10dp"
+        android:background="#ff1a1b1d"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="200dp"
+         />
+    <ImageButton
+        android:id="@+id/play_btn_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/play_button_white"
+        android:layout_below="@+id/seekBar"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:padding="10dp"
+        android:background="#ff1a1b1d" />
+    <ImageButton
+        android:id="@+id/pause_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/pause_white_symbol"
+        android:layout_below="@+id/seekBar"
+        android:layout_marginTop="20dp"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:padding="10dp"
+        android:background="#ff1a1b1d" />
+    <ImageButton
+        android:id="@+id/prev_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/prev_song_button"
+        android:background="@drawable/rectangle_bg"
+        android:layout_below="@+id/white_vol_button"
+        android:layout_marginTop="50dp"
+        android:padding="10dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginLeft="150dp" />
+    <ImageButton
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/plus_playlist_button_removebg_preview"
+        android:layout_below="@+id/adView"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp" />
+    <include layout="@layout/activity_bottom_base"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ff1a1b1d"
+    tools:context=".InsidePlaylist">
+    <RelativeLayout
+        android:id="@+id/rect_lib_top"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#ff1a1b1d"
+        >
+        <TextView
+            android:id="@+id/inside_playlist_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="#ff5b86e5"
+            android:backgroundTintMode="add"
+            android:fontFamily="Open Sans"
+            android:textStyle="bold"
+
+            />
+        <ImageButton
+            android:id="@+id/play_list_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/create_playlist"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp" />
+        <ImageButton
+            android:id="@+id/play_list_inside_back_button"
+            android:layout_width="14dp"
+            android:layout_height="24dp"
+            android:padding="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/back_chevron_right"/>
+    </RelativeLayout>
+    <ImageView
+        android:id="@+id/red_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/blue_line_settings"
+        android:layout_below="@+id/rect_lib_top"
+        />
+    <ScrollView
+        android:layout_below="@id/red_line"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:scrollbars="vertical"
+        android:descendantFocusability="blocksDescendants"
+        android:focusableInTouchMode = "true"
+        android:nestedScrollingEnabled="true"
+        android:id="@+id/scroll_view">
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/cover_Image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/song_title_inside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cover_Image"
+        android:layout_centerHorizontal="true"
+        android:singleLine="false"
+        android:textColor="#fff"
+        android:gravity="left"
+        android:layout_alignBottom="@+id/cover_Image"
+        android:layout_marginBottom="-60dp"
+        android:textSize="25sp"
+        android:text="Title Here"
+        />
+<Button
+    android:id="@+id/shuffle_play"
+    android:layout_width="200dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="-40dp"
+    android:layout_centerHorizontal="true"
+    android:layout_alignBottom="@+id/song_title_inside"
+    android:background="@drawable/roundplaylistbutton"
+    android:text="Shuffle Play"
+    android:textStyle="bold"
+    android:textColor="#fff"
+    android:layout_marginLeft="100dp"
+    android:layout_above="@id/recyclerView_playlist_Inside"
+    />
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:backgroundTint="#ff1a1b1d"
+        android:id="@+id/recyclerView_playlist_Inside"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="300dp"
+        android:background="@color/cardview_dark_background"
+        android:padding="4dp"
+        android:descendantFocusability="blocksDescendants"
+        android:nestedScrollingEnabled="true"
+        android:focusableInTouchMode="true"
+        >
+
+        </androidx.recyclerview.widget.RecyclerView>
+</RelativeLayout>
+    </ScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:backgroundTint="#ff1a1b1d"
+        android:id="@+id/recyclerView_playlist_Inside2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cardview_dark_background"
+        android:padding="4dp"
+        android:descendantFocusability="blocksDescendants"
+        android:nestedScrollingEnabled="true"
+        android:focusableInTouchMode="true"
+        android:visibility="invisible"
+        android:layout_marginBottom="60dp"
+        >
+
+    </androidx.recyclerview.widget.RecyclerView>
+    <RelativeLayout
+        android:id="@+id/seekLayout"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        android:background="#ff1a1b1d"
+        >
+        <SeekBar
+            android:id="@+id/inside_playlist_seekbar"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="55dp"
+            android:thumb="@drawable/thumb_vol"
+            android:splitTrack="false"
+            android:progressTint="#ff5b86e5"
+            android:progressDrawable="@drawable/custom_seek_bar_background"
+            android:progress="50"
+            tools:targetApi="lollipop"
+            />
+        <ImageButton
+            android:id="@+id/play_button_insideplaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/play_button_white"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            />
+        <ImageButton
+            android:id="@+id/pause_button_insideplaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/pause_symbol_whitex"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
+            android:visibility="invisible"
+            />
+        <ImageButton
+            android:id="@+id/prev_btn_insidePlaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/prev_song_button"
+            android:background="@drawable/rectangle_bg"
+            android:layout_marginTop="30dp"
+            android:padding="10dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginLeft="100dp" />
+        <ImageButton
+            android:id="@+id/next_Btn_insidePlaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/next_song_button"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="260dp"
+            android:padding="10dp"
+            android:background="#ff1a1b1d"
+            android:layout_marginStart="260dp" />
+    </RelativeLayout>
+    <include layout="@layout/activity_bottom_base"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="start_rela">
+        <item name="android:textColor">#ff000000</item>
+        <item name="android:textSize">23sp</item>
+        <item name="android:fontFamily">Open Sans</item>
+        <item name="android:text">@string/button_home1</item>
+    </style>
+
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Style for "line_18" -->
+    <!-- Add this snippet to layer-list xml in drawable. -->
+    <item android:width="376dp" android:height="1dp">
+        <shape android:shape="rectangle">
+            <stroke android:width="2dp" android:color="#ffe55b5b" />
+            <item name="android:shadowColor">#ff5b86e5</item>
+            <!-- TextView shadow offsets do not respect scale. -->
+            <item name="android:shadowDx">0</item>
+            <item name="android:shadowDy">3</item>
+        </shape>
+    </item>
+</selector>

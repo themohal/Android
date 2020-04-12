@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="280dp"
+    android:layout_height="140dp"
+   android:orientation="vertical"
+    android:layout_gravity="center"
+    tools:context=".RecordingPlayFragment"
+    android:background="#ff1a1b1d"
+    android:maxHeight="140dp"
+    >
+    <TextView
+        android:layout_marginTop="10dp"
+        android:id="@+id/recordingNameTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_marginLeft="15dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:text="hello this"
+        android:layout_marginStart="15dp"
+        android:gravity="center_horizontal"
+        android:textColor="#fff"
+        />
+
+    <SeekBar
+        android:id="@+id/recordingSeekbar"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/recordingNameTitle"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="70dp"
+        android:thumb="@drawable/thumb_vol"
+        android:max="100"
+        android:splitTrack="false"
+        android:progressTint="#ff5b86e5"
+        android:progressDrawable="@drawable/custom_seek_bar_background"
+        tools:targetApi="lollipop"
+
+        android:layout_marginStart="70dp" />
+    <ImageButton
+        android:id="@+id/recordingPlayBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recordingNameTitle"
+        android:background="@drawable/play_button_white"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        />
+    <ImageButton
+        android:id="@+id/recordingPauseBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pause_symbol_whitex"
+        android:layout_below="@+id/recordingNameTitle"
+        android:layout_marginTop="27dp"
+        android:layout_marginLeft="15dp"
+        />
+</RelativeLayout>

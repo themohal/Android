@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".playListSettings">
+
+    <RelativeLayout
+        android:id="@+id/rect_lib_top"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="#ff1a1b1d"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Playlist"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="#ff5b86e5"
+            android:backgroundTintMode="add"
+            android:fontFamily="Open Sans"
+            android:textStyle="bold"
+
+            />
+        <ImageButton
+            android:id="@+id/play_list_create_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/create_playlist"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="10dp"
+            android:padding="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp" />
+        <ImageButton
+            android:id="@+id/play_list_lib_back_button"
+            android:layout_width="14dp"
+            android:layout_height="24dp"
+            android:padding="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/back_chevron_right"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/red_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/blue_line_settings"
+        android:layout_below="@+id/rect_lib_top"
+        />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:backgroundTint="#ff1a1b1d"
+        android:id="@+id/recyclerView_playlist_settings"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/adView"
+        android:background="@color/cardview_dark_background"
+        android:scrollbars="vertical"
+        android:padding="4dp"
+        android:layout_below="@id/red_line"/>
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        />
+    <include layout="@layout/activity_bottom_base"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>

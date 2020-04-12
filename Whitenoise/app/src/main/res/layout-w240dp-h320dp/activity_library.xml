@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/library_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".library">
+
+    <RelativeLayout
+        android:id="@+id/rect_lib_top"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@drawable/rect_top_lib"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Library"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textColor="#ffe55b5b"
+            android:backgroundTintMode="add"
+            android:fontFamily="Open Sans"
+            android:textStyle="bold"
+
+            />
+        <ImageButton
+            android:id="@+id/lib_back_button"
+            android:layout_width="14dp"
+            android:layout_height="24dp"
+            android:padding="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/back_chevron_right"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/red_line"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/red_line_lib"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rect_lib_top" />
+
+    <Button
+        android:id="@+id/play_list"
+        android:layout_width="155dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/lib_image_layer"
+        android:drawableTop="@drawable/album"
+        android:text="Playlist"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/recording"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/red_line" />
+
+
+    <Button
+        android:id="@+id/recording"
+        android:layout_width="155dp"
+        android:layout_height="115dp"
+        android:background="@drawable/lib_image_layer"
+        android:drawableTop="@drawable/compact_disc"
+        android:text="Recordings"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/red_line" />
+
+    <Button
+        android:id="@+id/setting"
+        android:layout_width="155dp"
+        android:layout_height="115dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/lib_image_layer"
+        android:drawableTop="@drawable/gear"
+        android:text="Settings"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="@+id/share"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/moreApps"
+        android:layout_width="155dp"
+        android:layout_height="115dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/lib_image_layer"
+        android:drawableTop="@drawable/sharethis_logo"
+        android:text="More Apps"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/share"
+        app:layout_constraintStart_toEndOf="@+id/share" />
+
+    <include
+        layout="@layout/activity_bottom_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
