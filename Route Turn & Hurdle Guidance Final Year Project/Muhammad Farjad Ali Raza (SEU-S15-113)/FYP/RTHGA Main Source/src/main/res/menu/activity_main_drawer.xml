@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_satelite"
+            android:icon="@drawable/ic_action_gps"
+            android:title="Satellite" />
+        <item
+            android:id="@+id/nav_hybrid"
+            android:icon="@drawable/ic_action_hybrid"
+            android:title="Hybrid" />
+        <item
+            android:id="@+id/nav_terrian"
+            android:icon="@drawable/ic_action_terrian"
+            android:title="Terrian" />
+        <item
+            android:id="@+id/nav_road"
+            android:icon="@drawable/ic_action_road"
+            android:title="Road" />
+    </group>
+
+    <item android:title="Account">
+        <menu>
+
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_action_logout"
+                android:title="Log Out" />
+        </menu>
+    </item>
+    <item android:title="Help">
+        <menu>
+
+            <item
+                android:id="@+id/about_app"
+                android:title="About Us" />
+            <item
+                android:id="@+id/privacy_policy"
+                android:title="Privacy &amp; Policy"/>
+            <item
+                android:title="Contact Us"/>
+        </menu>
+    </item>
+</menu>

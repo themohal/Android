@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    tools:context=".MainActivity"
+    >
+
+    <com.mapbox.mapboxsdk.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:mapbox_cameraTargetLat="40.73581"
+        app:mapbox_cameraTargetLng="-73.99155"
+        app:mapbox_cameraZoom="11"
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+        <ImageButton
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:id="@+id/currentLoc"
+            android:layout_marginRight="20dp"
+            android:background="@mipmap/ic_loc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="100dp"
+            />
+
+    <!-- <Button
+        android:id="@+id/naviB"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+
+        android:background="@color/mapbox_navigation_route_shield_layer_color"
+        android:enabled="false"
+        android:text="Start Navigation"
+        android:textColor="@color/cardview_light_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent" /> -->
+
+
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabFullScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="4dp"
+        android:clickable="true"
+        android:tint="@android:color/white"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/currentLoc"
+        app:layout_constraintEnd_toEndOf="@id/currentLoc"
+        app:layout_constraintHorizontal_bias="0.533"
+
+
+        app:layout_constraintStart_toStartOf="@id/currentLoc"
+        app:srcCompat="@android:drawable/ic_search_category_default" />
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+    </FrameLayout>
+
+
+</android.support.constraint.ConstraintLayout>

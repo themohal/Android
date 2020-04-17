@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".bottom_sheet_dlg"
+    android:gravity="center_horizontal"
+    android:background="@drawable/feedback_bottomsheet_background"
+    android:orientation="vertical"
+    android:padding="12dp"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textColor="#000"
+        android:text="9999999"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:visibility="visible"
+        android:clickable="false"
+        />
+
+    <TextView
+        android:id="@+id/distance"
+        android:visibility="visible"
+        android:text="10000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:freezesText="true"
+        android:clickable="false"
+
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+
+    <Button
+
+        android:id="@+id/navButton"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Directions"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        android:drawableLeft="@drawable/direction"
+        android:drawableTint="#fff"
+        android:paddingLeft="10dp"
+        android:drawablePadding="-10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ffff"
+         />
+</RelativeLayout>
+</FrameLayout>
