@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 if(user.getImageURL().equals("default")){
                     profileImage.setImageResource(R.mipmap.ic_launcher);
                 }else {
-                    Glide.with(MainActivity.this).load(user.getImageURL()).into(profileImage);
+                    Glide.with(getApplicationContext()).load(user.getImageURL()).into(profileImage);
                     //after that created new directory in res named menu and then created resource file menu then inflating menu
                 }
 
