@@ -19,6 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity {
     MaterialEditText email,password;
     Button btn_login;
@@ -31,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Toolbar toolbar =findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Login");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Login");
         getSupportActionBar().setHomeButtonEnabled(true);
 
         email =findViewById(R.id.email);
@@ -49,8 +51,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginUser(View view) {
-        String txt_email = email.getText().toString();
-        String txt_password = password.getText().toString();
+        String txt_email = Objects.requireNonNull(email.getText()).toString();
+        String txt_password = Objects.requireNonNull(password.getText()).toString();
         if(TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_password)){
             Toast.makeText(this, "Email or Password field is empty", Toast.LENGTH_SHORT).show();
         }else {

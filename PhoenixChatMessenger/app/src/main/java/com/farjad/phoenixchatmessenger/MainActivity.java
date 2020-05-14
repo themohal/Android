@@ -9,7 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,12 +30,15 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 import Fragments.ChatFragment;
 import Fragments.ProfileFragment;
 import Fragments.UsersFragment;
+import Model.Chats;
 import Model.User;
 import de.hdodenhof.circleimageview.CircleImageView;
+import notification.MyFirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
     CircleImageView profileImage;
@@ -46,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar =findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");
 
         profileImage =findViewById(R.id.profile_image);
         userName = findViewById(R.id.username);
@@ -59,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //now storing data to the newly created class
                 User user =dataSnapshot.getValue(User.class);
+                assert user != null;
                 userName.setText(user.getUsername());
                 if(user.getImageURL().equals("default")){
                     profileImage.setImageResource(R.mipmap.ic_launcher);
@@ -77,13 +83,44 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tabLayout);
         ViewPager viewPager= findViewById(R.id.viewPager);
         //now create class viewpageradapter below
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
-        //add new package name fragment and add new black fragment chat and user
-        viewPagerAdapter.addfragment(new ChatFragment(),"Chats");
-        viewPagerAdapter.addfragment(new UsersFragment(),"Users");
-        viewPagerAdapter.addfragment(new ProfileFragment(),"Profile");
-        viewPager.setAdapter(viewPagerAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+        reference = FirebaseDatabase.getInstance().getReference("Chats");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+                int unread =0;
+                for(DataSnapshot snapshot:dataSnapshot.getChildren()){
+                    Chats chats =  snapshot.getValue(Chats.class);
+                    assert chats != null;
+                    if(chats.getReceiver().equals(firebaseUser.getUid()) && !chats.isIsseen()){
+                        unread++;
+
+                    }
+                    else if(chats.isIsseen()){
+                        unread=0;
+                        NotificationManager notificationManager =(NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+                        assert notificationManager != null;
+                        notificationManager.cancelAll();
+                    }
+                }
+                if(unread==0){
+                    viewPagerAdapter.addfragment(new ChatFragment(),"Chats");
+                }else {
+                    viewPagerAdapter.addfragment(new ChatFragment(),"Chats ("+unread+")");
+                }
+                //add new package name fragment and add new black fragment chat and user
+                viewPagerAdapter.addfragment(new UsersFragment(),"Users");
+                viewPagerAdapter.addfragment(new ProfileFragment(),"Profile");
+                viewPager.setAdapter(viewPagerAdapter);
+                tabLayout.setupWithViewPager(viewPager);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
     //now inlflating menu
@@ -96,18 +133,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.logout:
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(MainActivity.this,StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                return true;
+        if (item.getItemId() == R.id.logout) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(MainActivity.this, StartActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            return true;
         }
         return false;
     }
-    class ViewPagerAdapter extends FragmentPagerAdapter {
+    static class ViewPagerAdapter extends FragmentPagerAdapter {
         private ArrayList<Fragment> fragments;
         private ArrayList<String> titles;
-        public ViewPagerAdapter(@NonNull FragmentManager fm) {
+        ViewPagerAdapter(@NonNull FragmentManager fm) {
             super(fm);
             this.fragments =new ArrayList<>();
             this.titles = new ArrayList<>();
@@ -123,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             return fragments.size();
         }
-        public void addfragment(Fragment fragment,String title){
+        void addfragment(Fragment fragment, String title){
             fragments.add(fragment);
             titles.add(title);
         }

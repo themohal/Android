@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="holder_seen">Seen</string>
+    <string name="holder_delivered">Delivered</string>
+    <string name="user_adpter_last_message">No Message</string>
 </resources>

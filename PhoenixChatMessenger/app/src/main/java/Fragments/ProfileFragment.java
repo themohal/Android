@@ -21,7 +21,6 @@ import com.bumptech.glide.Glide;
 import com.farjad.phoenixchatmessenger.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +35,7 @@ import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import Model.User;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -44,12 +44,12 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class ProfileFragment extends Fragment {
-    CircleImageView profile_image;
-    TextView username;
-    FirebaseUser firebaseUser;
-    DatabaseReference reference;
+    private CircleImageView profile_image;
+    private TextView username;
+    private FirebaseUser firebaseUser;
+    private DatabaseReference reference;
     //for uploading image
-    StorageReference storageReference;
+    private StorageReference storageReference;
     private static final int IMAGE_REQUEST=1;
     private Uri imageUri;
     private StorageTask uploadTask;
@@ -70,11 +70,12 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
+                assert user != null;
                 username.setText(user.getUsername());
                 if(user.getImageURL().equals("default")){
                     profile_image.setImageResource(R.mipmap.ic_launcher);
                 }else {
-                    Glide.with(getContext()).load(user.getImageURL()).into(profile_image);
+                    Glide.with(Objects.requireNonNull(getContext())).load(user.getImageURL()).into(profile_image);
                 }
             }
 
@@ -83,12 +84,7 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-    profile_image.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            openImage();
-        }
-    });
+    profile_image.setOnClickListener(v -> openImage());
 
         return view;
     }
@@ -100,7 +96,7 @@ public class ProfileFragment extends Fragment {
         startActivityForResult(intent,IMAGE_REQUEST);
     }
     private String getFileExtension(Uri uri){
-        ContentResolver contentResolver =getContext().getContentResolver();
+        ContentResolver contentResolver = Objects.requireNonNull(getContext()).getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
 
@@ -113,19 +109,17 @@ public class ProfileFragment extends Fragment {
             final StorageReference fileReference = storageReference.child(System.currentTimeMillis()
                     +"."+getFileExtension(imageUri));
             uploadTask =fileReference.putFile(imageUri);
-            uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot,Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if(!task.isSuccessful()){
-                        throw  task.getException();
-                    }
-                    return fileReference.getDownloadUrl();
+            uploadTask.continueWithTask((Continuation<UploadTask.TaskSnapshot, Task<Uri>>) task -> {
+                if(!task.isSuccessful()){
+                    throw  task.getException();
                 }
+                return fileReference.getDownloadUrl();
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                 @Override
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
+                        assert downloadUri != null;
                         String mUri = downloadUri.toString();
                         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
                         HashMap<String, Object> map = new HashMap<>();
@@ -139,12 +133,9 @@ public class ProfileFragment extends Fragment {
                     }
 
                 }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    pd.dismiss();
-                }
+            }).addOnFailureListener(e -> {
+                Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                pd.dismiss();
             });
         }else {
             Toast.makeText(getContext(), "No Image selected", Toast.LENGTH_SHORT).show();

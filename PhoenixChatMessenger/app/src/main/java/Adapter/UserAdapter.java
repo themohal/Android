@@ -26,14 +26,13 @@ import java.util.List;
 
 import Model.Chats;
 import Model.User;
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     private Context mContext ;
     private List <User> mUser;
     //for online and offline status
     private boolean isChat;
-    String theLastMessage;
+    private String theLastMessage;
 
     public UserAdapter(Context mContext,List<User> mUser,boolean isChat){
         this.mContext =mContext;
@@ -45,7 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.user_item,parent,false);
-        return new UserAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -75,13 +74,10 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             holder.img_offline.setVisibility(View.GONE);
             holder.img_online.setVisibility(View.GONE);
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent =new Intent(mContext, MessageActivity.class);
-                intent.putExtra("userID",user.getId());
-                mContext.startActivity(intent);
-            }
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent =new Intent(mContext, MessageActivity.class);
+            intent.putExtra("userID",user.getId());
+            mContext.startActivity(intent);
         });
 
     }
@@ -91,13 +87,13 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         return mUser.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         public TextView username;
         public ImageView profile_image;
-        public ImageView img_online;
-        public ImageView img_offline;
-        public TextView lastMessage;
-        public ViewHolder(View itemView){
+        ImageView img_online;
+        ImageView img_offline;
+        TextView lastMessage;
+        ViewHolder(View itemView){
             super(itemView);
             username =itemView.findViewById(R.id.username);
             profile_image = itemView.findViewById(R.id.profile_image);
@@ -117,18 +113,17 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                     Chats chats = snapshot.getValue(Chats.class);
+                    assert chats != null;
+                    assert firebaseUser != null;
                     if(chats.getReceiver().equals(firebaseUser.getUid()) && chats.getSender().equals(userId) ||
                             chats.getReceiver().equals(userId) && chats.getSender().equals(firebaseUser.getUid())){
                     theLastMessage =chats.getMessage();
                     }
                 }
-                switch (theLastMessage){
-                    case "default":
-                        lastMessage.setText("No Message");
-                        break;
-                    default:
-                        lastMessage.setText(theLastMessage);
-                        break;
+                if ("default".equals(theLastMessage)) {
+                    lastMessage.setText(R.string.user_adpter_last_message);
+                } else {
+                    lastMessage.setText(theLastMessage);
                 }
                 theLastMessage ="default";
             }

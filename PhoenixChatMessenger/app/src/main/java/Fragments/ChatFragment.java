@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,14 +27,15 @@ import java.util.List;
 import Adapter.UserAdapter;
 import Model.ChatList;
 import Model.User;
+import notification.Token;
 
 public class ChatFragment extends Fragment {
     private RecyclerView recyclerView;
     private UserAdapter userAdapter;
 
     private List<User> mUser;
-    FirebaseUser fuser;
-    DatabaseReference reference;
+    private FirebaseUser fuser;
+    private DatabaseReference reference;
     private List<ChatList> userList;
 
     @Override
@@ -44,7 +46,7 @@ public class ChatFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         fuser = FirebaseAuth.getInstance().getCurrentUser();
-        userList = new ArrayList<ChatList>();
+        userList = new ArrayList<>();
         mUser =new ArrayList<>();
 
         reference = FirebaseDatabase.getInstance().getReference("ChatList").child(fuser.getUid());
@@ -66,10 +68,14 @@ public class ChatFragment extends Fragment {
             }
         });
 
-
+        updateToken(FirebaseInstanceId.getInstance().getToken());
         return view;
     }
-
+    private void updateToken(String token){
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token token1 = new Token(token);
+        reference.child(fuser.getUid()).setValue(token1);
+    }
     private void chatList() {
         reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
@@ -79,6 +85,7 @@ public class ChatFragment extends Fragment {
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
                     for(ChatList chatList:userList){
+                        assert user != null;
                         if(user.getId().equals(chatList.getId())){
                             mUser.add(user);
                         }
